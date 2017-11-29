@@ -1,0 +1,33 @@
+<!-- Teresa Rothaar
+     React from the Ground Up (Udemy Course)
+     Hello World with React
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hello World With React</title>
+  <meta charset="utf-8">
+
+<!-- Import React -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+
+  <script>
+  ReactDOM.render(
+    React.createElement(
+      'h1',
+      null,
+      'Hello World!'
+    ),
+    document.getElementById('app')
+  );
+  </script>
+
+</body>
+</html>
