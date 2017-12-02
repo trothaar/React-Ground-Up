@@ -1,0 +1,62 @@
+<!-- Teresa Rothaar
+     React from the Ground Up (Udemy Course)
+     States
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>State Within React Components</title>
+  <meta charset="utf-8">
+
+  <!-- Import React -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+  <!-- Import Babel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.2/browser.min.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script type ="text/babel">
+  var NameStateComponent = React.createClass({
+    resetName: function() {
+      this.setState({
+        name: '',
+      })
+      /* I went a bit further and figured out how to clear the input box as well
+      per https://stackoverflow.com/questions/38731271/clear-an-input-field-with-reactjs */
+      this.refs.someName.value = ''
+    },
+    nameChanged: function(event) {
+      console.log("nameChanged called")
+      this.setState({
+        name: event.target.value
+      })
+    },
+    getInitialState: function() {
+      return{
+        name: ''
+      }
+    },
+    render: function(){
+      console.log(this.state)
+      return(
+        <div>
+        <input type = 'text' ref = 'someName' onChange={this.nameChanged} />
+        <h1>Hello, my name is {this.state.name}!</h1>
+        <button onClick={this.resetName}>Reset Name</button>
+        </div>
+      )
+    }
+  });
+
+  ReactDOM.render(
+    <NameStateComponent />,
+    document.getElementById('app')
+  );
+  </script>
+
+</body>
+</html>
