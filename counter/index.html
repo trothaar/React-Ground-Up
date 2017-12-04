@@ -1,0 +1,74 @@
+<!-- Teresa Rothaar
+     React from the Ground Up (Udemy Course)
+     State Build Challenge: Counter Project
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Counter</title>
+    <!-- Import React -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+    <!-- Import Babel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.2/browser.min.js"></script>
+  <!-- Import CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+    </script>
+    <body>
+      <div id="app"></div>
+
+      <script type ="text/babel">
+      var CountStateComponent = React.createClass({
+        resetCount: function() {
+            this.setState({
+            count: 0
+          })
+        },
+       addOne: function() {
+            this.setState({
+            count: this.state.count+1
+          })
+        },
+        addFive: function() {
+             this.setState({
+             count: this.state.count+5
+           })
+         },
+         addTen: function() {
+              this.setState({
+              count: this.state.count+10
+            })
+          },
+      getInitialState: function() {
+          return{
+            count: 0
+          }
+        },
+        render: function(){
+          console.log(this.state)
+          return(
+            <div className = "container">
+            <h1>Count: {this.state.count}</h1>
+            <button className="btn blue-btn" onClick={this.addOne}>Add 1</button>
+            <button className="btn green-btn" onClick={this.addFive}>Add 5</button>
+            <button className="btn purple-btn" onClick={this.addTen}>Add 10</button>
+            <button className="reset-btn red-btn" onClick={this.resetCount}>Reset</button>
+            </div>
+          )
+        }
+      });
+
+      ReactDOM.render(
+        <CountStateComponent />,
+        document.getElementById('app')
+      );
+      </script>
+
+    </body>
+    </html>
