@@ -1,0 +1,75 @@
+<!-- Teresa Rothaar
+     React from the Ground Up (Udemy Course)
+     ES6 Build Challenge: Rework Counter Project Using ES6
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Counter</title>
+    <!-- Import React -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+    <!-- Import Babel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.2/browser.min.js"></script>
+  <!-- Import CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+    </script>
+    <body>
+      <div id="app"></div>
+
+      <script type ="text/babel">
+      class Counter extends React.Component{
+       constructor(props){
+         super(props);
+         this.state = { count: 0 }
+       }
+       addValue(value) {
+            this.setState({
+            count: this.state.count+value
+          })
+        }
+        resetCount () {
+            this.setState({
+            count: 0
+          })
+        }
+        render(){
+          return(
+            <div className = "container">
+            <h1>Count: {this.state.count}</h1>
+            <Button style="btn blue-btn" text={`${this.props.text} ${this.props.valueOne}`} value={this.props.valueOne} clickHandler={this.addValue.bind(this, this.props.valueOne)} />
+            <Button style="btn green-btn" text={`${this.props.text} ${this.props.valueTwo}`} value={this.props.valueOne} clickHandler={this.addValue.bind(this, this.props.valueTwo)} />
+            <Button style="btn purple-btn" text={`${this.props.text} ${this.props.valueThree}`} value={this.props.valueOne} clickHandler={this.addValue.bind(this, this.props.valueThree)} />
+            <Button style="reset-btn red-btn" text="Reset" clickHandler={this.resetCount.bind(this)} />
+            </div>
+          )
+        }
+      }
+
+      Counter.defaultProps = {valueOne: 1,
+        valueTwo: 5,
+        valueThree: 10,
+        text: "Add"}
+
+      Counter.propTypes = {value: React.PropTypes.number, text: React.PropTypes.string}
+
+      const Button = (props) => {
+            return (
+              <button className={props.style} value={props.value} onClick={props.clickHandler}>{props.text}</button>
+            )
+          };
+
+      ReactDOM.render(
+        <Counter />,
+        document.getElementById('app')
+      );
+      </script>
+
+    </body>
+    </html>
