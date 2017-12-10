@@ -28,6 +28,7 @@
        constructor(props){
          super(props);
          this.state = { count: 0 }
+         this.addValue = this.addValue.bind(this);
        }
        addValue(value) {
             this.setState({
@@ -43,9 +44,9 @@
           return(
             <div className = "container">
             <h1>Count: {this.state.count}</h1>
-            <Button style="btn blue-btn" text={`${this.props.text} ${this.props.valueOne}`} value={this.props.valueOne} clickHandler={this.addValue.bind(this, this.props.valueOne)} />
-            <Button style="btn green-btn" text={`${this.props.text} ${this.props.valueTwo}`} value={this.props.valueOne} clickHandler={this.addValue.bind(this, this.props.valueTwo)} />
-            <Button style="btn purple-btn" text={`${this.props.text} ${this.props.valueThree}`} value={this.props.valueOne} clickHandler={this.addValue.bind(this, this.props.valueThree)} />
+            <Button style="btn blue-btn" text={`${this.props.text} ${this.props.valueOne}`} value={this.props.valueOne} clickHandler={() => this.addValue(this.props.valueOne)} />
+            <Button style="btn green-btn" text={`${this.props.text} ${this.props.valueTwo}`} value={this.props.valueOne} clickHandler={() => this.addValue(this.props.valueTwo)} />
+            <Button style="btn purple-btn" text={`${this.props.text} ${this.props.valueThree}`} value={this.props.valueOne} clickHandler={() => this.addValue(this.props.valueThree)} />
             <Button style="reset-btn red-btn" text="Reset" clickHandler={this.resetCount.bind(this)} />
             </div>
           )
@@ -64,6 +65,13 @@
               <button className={props.style} value={props.value} onClick={props.clickHandler}>{props.text}</button>
             )
           };
+
+      Button.PropTypes = {
+        text: React.PropTypes.string,
+        value: React.PropTypes.number,
+        style: React.PropTypes.string,
+        clickHandler: React.PropTypes.func.isRequired
+      }
 
       ReactDOM.render(
         <Counter />,
