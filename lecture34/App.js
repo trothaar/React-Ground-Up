@@ -12,7 +12,7 @@ class App extends Component {
    super(props);
    this.state ={
      pokemon: [],
-     activePage: 0,
+     activePage: 1,
      limit: 50,
      offset: 0,
      totalPages: 0,
